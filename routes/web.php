@@ -24,3 +24,22 @@ Route::get('/contact', function () {
 });
 
 Route::get('/projects', 'ProjectsController@index');
+Route::post('/projects', 'ProjectsController@store');
+Route::get('/projects/create', 'ProjectsController@create');
+
+
+Route::get('/angular', function()
+{
+    return View::make('angular');//this will not use blade
+});
+
+Route::get('/angular/todo', function()
+{
+    return \App\Todo::all();
+});
+
+Route::post('/angular/todo', function()
+{
+    //when you pass reference input::all() laravel know how to look for request data.
+    return \App\Todo::create(\Illuminate\Support\Facades\Input::all());
+});
