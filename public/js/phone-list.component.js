@@ -15,10 +15,10 @@ component('phoneList', {  // This name is what AngularJS uses to match to the `<
                 name: 'Nexus S',
                 snippet: 'Fast just got faster with Nexus S.'
             }, {
-                name: 'Motorola XOOM™ with Wi-Fi',
+                name: 'Motorola XOOM™',
                 snippet: 'The Next, Next Generation tablet.'
             }, {
-                name: 'MOTOROLA XOOM™',
+                name: 'Apple X',
                 snippet: 'The Next, Next Generation tablet.'
             }
         ];
