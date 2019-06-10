@@ -23,9 +23,36 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
-Route::get('/projects', 'ProjectsController@index');
-Route::post('/projects', 'ProjectsController@store');
-Route::get('/projects/create', 'ProjectsController@create');
+/*  some Restful conventions about define the route: behaviours interact with a model
+
+    GET /projects (index)
+    GET /projects/create (create)
+    GET /projects/1 (show)
+    POST /projects (store)
+    GET /projects/1/edit (edit)
+    PUT  //put is similar with patch, ignore for now
+    PATCH /projects/1  (update) //normally most of time, you will only update 1 certain project with id 1, instead of update all of them.
+    DELETE /projects/1  (destroy) //same as update, delete only 1 for most of time.
+*/
+
+Route::resource('projects', 'ProjectsController'); //because we follow the convention, this line will give us the same result as below 7 lines
+
+//Route::get('/projects', 'ProjectsController@index');
+//
+//Route::get('/projects/create', 'ProjectsController@create');
+//
+////{project} is a wild card Laravel routing identifier
+//Route::get('/projects/{project}', 'ProjectsController@show');
+//
+//Route::post('/projects', 'ProjectsController@store');
+//
+//Route::get('/projects/{project}/edit', 'ProjectsController@edit');
+//
+//Route::patch('/projects/{project}', 'ProjectsController@update');
+//
+//Route::delete('/projects/{project}', 'ProjectsController@destroy');
+
+
 
 
 Route::get('/angular', function()

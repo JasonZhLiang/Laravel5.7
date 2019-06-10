@@ -22,15 +22,44 @@ class ProjectsController extends Controller
         return view('projects.create');
     }
 
+
+    public function show($id)
+    {
+        
+    }
+
+    public function edit($id)
+    {
+        $project = Project::findOrFail($id);
+        return view('projects.edit', compact('project'));
+    }
+
+    public function update($id)
+    {
+//        dd(request()->all());
+        $project = Project::find($id);
+        $project->title = request('title');
+        $project->description = request('description');
+        $project->save();
+        return redirect('/projects');
+    }
+
+    public function destroy($id)
+    {
+        Project::find($id)->delete();
+        return redirect('/projects');
+    }
+
     public function store()
     {
+//        request() is the way grab information user typed in the form
+//        return request()->all();
+//        return request('title');
+//        return request();//this will return a json object with all the fields you entered and a _token
         $project = new Project();
         $project->title = request('title');
         $project->description = request('description');
         $project->save();
-
         return redirect('/projects');//whenever you call redirect, by default it will be a get request.
-//        return request()->all();
-//        return request('title');
     }
 }

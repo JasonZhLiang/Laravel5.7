@@ -7,6 +7,7 @@
     <h1>Create a new Project</h1>
 
     <form method="POST" action="/projects">
+        {{--$middlewareGroups inside kernel.php in Http folder, will apply all the route list there, includes VerifyCsrfToken--}}
         {{csrf_field()}}
         <div>
             <input type="text" name="title" placeholder="Project title">

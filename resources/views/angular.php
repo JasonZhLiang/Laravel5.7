@@ -17,12 +17,9 @@
     </style>
 </head>
 <body ng-controller="TodosController">
-<div ng-controller="TodosController">
-
-</div>
     <h1>Angular Demo</h1>
     <h2>
-        Task list ddddd
+        Task list
 <!--        see the two ways data-binding of Angular-->
         <small ng-if="remaining()">({{ remaining() }} remaining)</small>
     </h2>
@@ -51,50 +48,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <!--    notice below link, doesn't work-->
 <!--    <script src="/public/js/angular.js"></script>-->
-    <script type="text/javascript">
-        //in order to get data from back_end, we need dependency inject http
-        function TodosController($scope, $http){
-            // $scope.todos = [
-            //     {body: 'go to bank', completed: true},
-            //     {body: 'finish video', completed: false},
-            //     {body: 'learn Angular', completed: false},
-            // ];
-
-            console.log($http.get('/angular/todo'));
-            $http.get('/angular/todo').success(function (todos) {
-                console.log(todos);
-                $scope.todos = todos;
-            });
-
-
-            $scope.remaining = function() {
-                var count = 0;
-                angular.forEach($scope.todos, function(todo) {
-                    count += todo.completed ? 0 : 1;
-                });
-
-                return count;
-            };
-
-            $scope.addTask = function () {
-
-                var todo = {
-                    body: $scope.newTaskText,
-                    completed: false
-                };
-                console.dir('dddd');
-                $scope.todos.push(todo);
-
-                $http.post('/angular/todo', todo)
-            };
-        }
-
-        // Define the `phonecatApp` module
-        angular.module('phonecatApp', [])
-            .controller('TodosController', TodosController)
-        ;
-
-    </script>
+    <script src="/js/angular.js"></script>
 
     <script src="/js/phone-list.component.js"></script>
 </body>
